@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABRSM Grade 5 Music Theory Practice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --warm-white: #FEFCFA;
+            --ink: #2C2416;
+            --ink-light: #5C5447;
+            --gold: #C4A35A;
+            --gold-light: #E8D4A8;
+            --success: #4A7C59;
+            --error: #A65D57;
+            --paper: #F9F5EF;
+            --shadow: rgba(44, 36, 22, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--warm-white);
+            border-bottom: 1px solid var(--gold-light);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #B8963F;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--ink);
+            border: 1.5px solid var(--gold-light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            background: var(--gold-light);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Landing Page */
+        .landing {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .landing h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .landing p {
+            font-size: 1.2rem;
+            color: var(--ink-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mode-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .mode-card {
+            background: var(--warm-white);
+            border: 1px solid var(--gold-light);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .mode-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px var(--shadow);
+        }
+
+        .mode-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .mode-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .mode-card p {
+            font-size: 1rem;
+            color: var(--ink-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .mode-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Quiz Section Selection */
+        .section-select {
+            background: var(--warm-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--gold-light);
+        }
+
+        .section-select h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        .section-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .section-chip {
+            padding: 0.5rem 1rem;
+            border: 1.5px solid var(--gold-light);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .section-chip:hover,
+        .section-chip.active {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+        }
+
+        /* Question Card */
+        .question-card {
+            background: var(--warm-white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--gold-light);
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gold-light);
+        }
+
+        .question-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .question-marks {
+            background: var(--gold-light);
+            color: var(--ink);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* Answer Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .option {
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--gold-light);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .option:hover {
+            border-color: var(--gold);
+            background: rgba(196, 163, 90, 0.05);
+        }
+
+        .option.selected {
+            border-color: var(--gold);
+            background: rgba(196, 163, 90, 0.1);
+        }
+
+        .option.correct {
+            border-color: var(--success);
+            background: rgba(74, 124, 89, 0.1);
+        }
+
+        .option.incorrect {
+            border-color: var(--error);
+            background: rgba(166, 93, 87, 0.1);
+        }
+
+        .option-marker {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--gold-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-marker {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
+        }
+
+        .option.correct .option-marker {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .option.incorrect .option-marker {
+            background: var(--error);
+            border-color: var(--error);
+            color: white;
+        }
+
+        /* True/False Grid */
+        .true-false-grid {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .true-false-item {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            background: var(--paper);
+            border-radius: 8px;
+        }
+
+        .tf-statement {
+            font-size: 1rem;
+        }
+
+        .tf-btn {
+            padding: 0.5rem 1.25rem;
+            border: 2px solid var(--gold-light);
+            border-radius: 6px;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .tf-btn:hover {
+            border-color: var(--gold);
+        }
+
+        .tf-btn.selected {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
+        }
+
+        .tf-btn.correct {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .tf-btn.incorrect {
+            background: var(--error);
+            border-color: var(--error);
+            color: white;
+        }
+
+        /* Fill in the blank */
+        .fill-blank {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .fill-blank input {
+            width: 80px;
+            padding: 0.5rem;
+            border: 2px solid var(--gold-light);
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .fill-blank input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .fill-blank input.correct {
+            border-color: var(--success);
+            background: rgba(74, 124, 89, 0.1);
+        }
+
+        .fill-blank input.incorrect {
+            border-color: var(--error);
+            background: rgba(166, 93, 87, 0.1);
+        }
+
+        /* Matching / Drag and Drop */
+        .matching-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .matching-column h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--ink-light);
+        }
+
+        .matching-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .matching-item {
+            padding: 1rem;
+            background: var(--paper);
+            border: 2px solid var(--gold-light);
+            border-radius: 8px;
+            cursor: grab;
+            transition: all 0.2s ease;
+        }
+
+        .matching-item:active {
+            cursor: grabbing;
+        }
+
+        .matching-item.dragging {
+            opacity: 0.5;
+            transform: scale(1.02);
+        }
+
+        .drop-zone {
+            min-height: 50px;
+            border: 2px dashed var(--gold-light);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .drop-zone.drag-over {
+            border-color: var(--gold);
+            background: rgba(196, 163, 90, 0.1);
+        }
+
+        .drop-zone.filled {
+            border-style: solid;
+            background: var(--paper);
+        }
+
+        /* Timer */
+        .timer {
+            position: fixed;
+            top: 80px;
+            right: 2rem;
+            background: var(--warm-white);
+            border: 1px solid var(--gold-light);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 20px var(--shadow);
+            z-index: 99;
+        }
+
+        .timer-label {
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timer-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .timer-value.warning {
+            color: var(--error);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--ink-light);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--gold-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), #D4B46A);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Navigation */
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gold-light);
+        }
+
+        /* Results */
+        .results {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .results h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .score-display {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .score-item {
+            background: var(--warm-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--gold-light);
+        }
+
+        .score-item-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .score-item-label {
+            color: var(--ink-light);
+            font-size: 0.9rem;
+        }
+
+        /* Feedback Display */
+        .feedback {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: rgba(74, 124, 89, 0.1);
+            border-left: 4px solid var(--success);
+        }
+
+        .feedback.incorrect {
+            background: rgba(166, 93, 87, 0.1);
+            border-left: 4px solid var(--error);
+        }
+
+        .feedback-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Teacher Dashboard */
+        .dashboard {
+            padding: 2rem;
+        }
+
+        .dashboard h2 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+        }
+
+        .student-table {
+            width: 100%;
+            background: var(--warm-white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gold-light);
+        }
+
+        .student-table th,
+        .student-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+        }
+
+        .student-table th {
+            background: var(--paper);
+            font-weight: 600;
+            color: var(--ink-light);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .student-table tr:not(:last-child) td {
+            border-bottom: 1px solid var(--gold-light);
+        }
+
+        .score-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .score-badge.high {
+            background: rgba(74, 124, 89, 0.15);
+            color: var(--success);
+        }
+
+        .score-badge.medium {
+            background: rgba(196, 163, 90, 0.2);
+            color: #9A7B2C;
+        }
+
+        .score-badge.low {
+            background: rgba(166, 93, 87, 0.15);
+            color: var(--error);
+        }
+
+        /* Login Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 36, 22, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--warm-white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(44, 36, 22, 0.2);
+        }
+
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--ink-light);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--gold-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* Hidden Sections */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Music notation placeholder */
+        .music-notation {
+            background: var(--paper);
+            border: 1px solid var(--gold-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-style: italic;
+            color: var(--ink-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .landing h1 {
+                font-size: 2rem;
+            }
+
+            .mode-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .timer {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .matching-container {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Question navigation dots */
+        .question-dots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .question-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .question-dot:hover {
+            border-color: var(--gold);
+        }
+
+        .question-dot.current {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
+        }
+
+        .question-dot.answered {
+            background: var(--gold-light);
+        }
+
+        .question-dot.correct {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .question-dot.incorrect {
+            background: var(--error);
+            border-color: var(--error);
+            color: white;
+        }
+
+        /* Upload section */
+        .upload-section {
+            background: var(--warm-white);
+            border: 2px dashed var(--gold-light);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            transition: all 0.2s ease;
+        }
+
+        .upload-section:hover {
+            border-color: var(--gold);
+        }
+
+        .upload-section input[type="file"] {
+            display: none;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">♪</div>
+                <span>Music Theory Practice</span>
+            </div>
+            <nav class="nav-buttons">
+                <button class="btn btn-secondary" onclick="showHome()">Home</button>
+                <button class="btn btn-secondary" onclick="showLogin('student')">Student Login</button>
+                <button class="btn btn-primary" onclick="showLogin('teacher')">Teacher Login</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Landing Page -->
+        <section id="landing" class="landing">
+            <h1>ABRSM Grade 5 Music Theory</h1>
+            <p>Practice makes perfect. Choose your study mode and master music theory concepts through interactive questions.</p>
+            
+            <div class="mode-cards">
+                <div class="mode-card" onclick="startQuiz('practice')">
+                    <div class="mode-icon">🎯</div>
+                    <h3>Practice Mode</h3>
+                    <p>Work through questions one at a time with immediate feedback. Perfect for learning and revision.</p>
+                    <span class="btn btn-primary">Start Practice</span>
+                </div>
+                
+                <div class="mode-card" onclick="startQuiz('exam')">
+                    <div class="mode-icon">📝</div>
+                    <h3>Exam Mode</h3>
+                    <p>Simulate the real exam with a 2-hour timer. See your results only at the end.</p>
+                    <span class="btn btn-primary">Start Exam</span>
+                </div>
+            </div>
+
+            <div class="section-select">
+                <h3>Select Topics (optional)</h3>
+                <div class="section-chips">
+                    <span class="section-chip active" data-section="all">All Topics</span>
+                    <span class="section-chip" data-section="rhythm">Rhythm</span>
+                    <span class="section-chip" data-section="pitch">Pitch</span>
+                    <span class="section-chip" data-section="keys">Keys & Scales</span>
+                    <span class="section-chip" data-section="intervals">Intervals</span>
+                    <span class="section-chip" data-section="chords">Chords</span>
+                    <span class="section-chip" data-section="terms">Terms & Signs</span>
+                    <span class="section-chip" data-section="context">Music in Context</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="hidden">
+            <!-- Timer (exam mode only) -->
+            <div id="timer" class="timer hidden">
+                <div class="timer-label">Time Remaining</div>
+                <div class="timer-value" id="timerDisplay">2:00:00</div>
+            </div>
+
+            <!-- Progress -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span id="progressText">Question 1 of 30</span>
+                    <span id="scoreText" class="hidden">Score: 0/75</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Question Navigation Dots -->
+            <div class="question-dots" id="questionDots"></div>
+
+            <!-- Question Container -->
+            <div id="questionContainer"></div>
+
+            <!-- Navigation -->
+            <div class="quiz-nav">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+                <button class="btn btn-secondary" id="checkBtn" onclick="checkAnswer()">Check Answer</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                <button class="btn btn-primary hidden" id="submitBtn" onclick="submitExam()">Submit Exam</button>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="results hidden">
+            <h2>Exam Complete!</h2>
+            <div class="score-display" id="finalScore">65/75</div>
+            <p id="scorePercentage">87% - Excellent work!</p>
+            
+            <div class="score-breakdown" id="scoreBreakdown">
+                <!-- Populated dynamically -->
+            </div>
+
+            <button class="btn btn-primary" onclick="reviewAnswers()">Review Answers</button>
+            <button class="btn btn-secondary" onclick="showHome()">Back to Home</button>
+        </section>
+
+        <!-- Teacher Dashboard -->
+        <section id="dashboard" class="dashboard hidden">
+            <h2>Teacher Dashboard</h2>
+            
+            <div class="upload-section" onclick="document.getElementById('questionUpload').click()">
+                <input type="file" id="questionUpload" accept=".json,.csv" onchange="handleUpload(event)">
+                <div class="upload-icon">📤</div>
+                <h3>Upload New Questions</h3>
+                <p>Drag & drop or click to upload a JSON or CSV file</p>
+            </div>
+
+            <h3 style="margin: 2rem 0 1rem; font-family: 'Playfair Display', serif;">Student Results</h3>
+            <table class="student-table">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Date</th>
+                        <th>Mode</th>
+                        <th>Score</th>
+                        <th>Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentResults">
+                    <!-- Populated dynamically -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <h3 id="loginTitle">Student Login</h3>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginName">Name</label>
+                    <input type="text" id="loginName" required placeholder="Enter your name">
+                </div>
+                <div class="form-group" id="passwordGroup" class="hidden">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Continue</button>
+            </form>
+            <button class="btn btn-secondary" style="width: 100%; margin-top: 0.75rem;" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
