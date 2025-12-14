@@ -37,7 +37,7 @@
         .header {
             background: var(--warm-white);
             border-bottom: 1px solid var(--gold-light);
-            padding: 1.5rem 2rem;
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -50,11 +50,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--ink);
             display: flex;
@@ -63,27 +65,45 @@
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
         }
 
         .nav-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--gold-light);
+            border-radius: 20px;
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 0.9rem;
+        }
+
+        .user-info::before {
+            content: '👤';
         }
 
         .btn {
-            padding: 0.6rem 1.25rem;
+            padding: 0.5rem 1rem;
             border-radius: 6px;
             font-family: 'Source Sans Pro', sans-serif;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s ease;
             border: none;
@@ -110,9 +130,19 @@
             background: var(--gold-light);
         }
 
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--error);
+            color: white;
+        }
+
         /* Main Container */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -120,21 +150,21 @@
         /* Landing Page */
         .landing {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 1rem;
         }
 
         .landing h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--ink);
         }
 
-        .landing p {
-            font-size: 1.2rem;
+        .landing > p {
+            font-size: 1.1rem;
             color: var(--ink-light);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -143,15 +173,15 @@
         .mode-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .mode-card {
             background: var(--warm-white);
             border: 1px solid var(--gold-light);
             border-radius: 16px;
-            padding: 2.5rem 2rem;
+            padding: 2rem 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
@@ -181,62 +211,123 @@
 
         .mode-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
         }
 
         .mode-card p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--ink-light);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .mode-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
         }
 
-        /* Quiz Section Selection */
-        .section-select {
+        /* Selection Panels */
+        .selection-panel {
             background: var(--warm-white);
             border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
             border: 1px solid var(--gold-light);
         }
 
-        .section-select h3 {
+        .selection-panel h3 {
             font-family: 'Playfair Display', serif;
             margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        .section-chips {
-            display: flex;
-            flex-wrap: wrap;
+        /* Question Type Selector (Intensive Mode) */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 0.75rem;
         }
 
-        .section-chip {
-            padding: 0.5rem 1rem;
-            border: 1.5px solid var(--gold-light);
-            border-radius: 20px;
+        .type-chip {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--gold-light);
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
+            text-align: center;
             font-size: 0.9rem;
         }
 
-        .section-chip:hover,
-        .section-chip.active {
-            background: var(--gold);
-            color: white;
+        .type-chip:hover {
             border-color: var(--gold);
+        }
+
+        .type-chip.selected {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
+        }
+
+        .type-chip .type-name {
+            font-weight: 600;
+            display: block;
+        }
+
+        .type-chip .type-desc {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        /* Year/Paper Selector (Exam Mode) */
+        .year-paper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .year-group {
+            background: var(--paper);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .year-group h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.75rem;
+            color: var(--ink);
+        }
+
+        .paper-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .paper-btn {
+            padding: 0.4rem 0.75rem;
+            border: 1.5px solid var(--gold-light);
+            border-radius: 6px;
+            background: var(--warm-white);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .paper-btn:hover {
+            border-color: var(--gold);
+        }
+
+        .paper-btn.selected {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
         }
 
         /* Question Card */
         .question-card {
             background: var(--warm-white);
             border-radius: 16px;
-            padding: 2.5rem;
+            padding: 2rem;
             margin-bottom: 1.5rem;
             border: 1px solid var(--gold-light);
             box-shadow: 0 4px 20px var(--shadow);
@@ -246,14 +337,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--gold-light);
         }
 
         .question-number {
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--gold);
             font-weight: 600;
         }
@@ -261,29 +352,51 @@
         .question-marks {
             background: var(--gold-light);
             color: var(--ink);
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
             font-weight: 600;
         }
 
         .question-text {
-            font-size: 1.15rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        /* Music Notation Image */
+        .music-notation {
+            background: var(--paper);
+            border: 1px solid var(--gold-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .music-notation img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .music-notation.placeholder {
+            font-style: italic;
+            color: var(--ink-light);
+            padding: 2rem 1rem;
         }
 
         /* Answer Options */
         .options {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.6rem;
         }
 
         .option {
-            padding: 1rem 1.25rem;
+            padding: 0.9rem 1rem;
             border: 2px solid var(--gold-light);
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
@@ -312,15 +425,15 @@
         }
 
         .option-marker {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border: 2px solid var(--gold-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             flex-shrink: 0;
         }
 
@@ -342,33 +455,100 @@
             color: white;
         }
 
+        /* Tick Box Grid (for transposition checking etc.) */
+        .tick-box-grid {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tick-box-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            min-width: 60px;
+        }
+
+        .tick-box-label {
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            text-align: center;
+        }
+
+        .tick-box-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .tick-btn {
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--gold-light);
+            border-radius: 6px;
+            background: var(--warm-white);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tick-btn:hover {
+            border-color: var(--gold);
+        }
+
+        .tick-btn.selected {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
+        }
+
+        .tick-btn.correct {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .tick-btn.incorrect {
+            background: var(--error);
+            border-color: var(--error);
+            color: white;
+        }
+
         /* True/False Grid */
         .true-false-grid {
-            display: grid;
-            gap: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
         }
 
         .true-false-item {
             display: grid;
             grid-template-columns: 1fr auto auto;
-            gap: 1rem;
+            gap: 0.75rem;
             align-items: center;
-            padding: 1rem;
+            padding: 0.75rem 1rem;
             background: var(--paper);
             border-radius: 8px;
         }
 
         .tf-statement {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .tf-btn {
-            padding: 0.5rem 1.25rem;
+            padding: 0.4rem 1rem;
             border: 2px solid var(--gold-light);
             border-radius: 6px;
             background: transparent;
             cursor: pointer;
             font-weight: 600;
+            font-size: 0.85rem;
             transition: all 0.2s ease;
         }
 
@@ -403,8 +583,8 @@
         }
 
         .fill-blank input {
-            width: 80px;
-            padding: 0.5rem;
+            width: 100px;
+            padding: 0.5rem 0.75rem;
             border: 2px solid var(--gold-light);
             border-radius: 6px;
             text-align: center;
@@ -427,76 +607,92 @@
             background: rgba(166, 93, 87, 0.1);
         }
 
-        /* Matching / Drag and Drop */
-        .matching-container {
+        /* Matching Dropdowns */
+        .matching-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .matching-column h4 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
-            color: var(--ink-light);
-        }
-
-        .matching-items {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .matching-item {
-            padding: 1rem;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.75rem;
             background: var(--paper);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .matching-row select {
+            padding: 0.5rem;
+            border: 2px solid var(--gold-light);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            min-width: 120px;
+        }
+
+        .matching-row select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* Click-to-Place Staff */
+        .staff-container {
+            position: relative;
+            background: white;
+            border: 1px solid var(--gold-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .staff-canvas {
+            width: 100%;
+            cursor: crosshair;
+        }
+
+        .accidental-toolbar {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--gold-light);
+        }
+
+        .accidental-btn {
+            width: 40px;
+            height: 40px;
             border: 2px solid var(--gold-light);
             border-radius: 8px;
-            cursor: grab;
+            background: var(--warm-white);
+            cursor: pointer;
+            font-size: 1.2rem;
             transition: all 0.2s ease;
         }
 
-        .matching-item:active {
-            cursor: grabbing;
-        }
-
-        .matching-item.dragging {
-            opacity: 0.5;
-            transform: scale(1.02);
-        }
-
-        .drop-zone {
-            min-height: 50px;
-            border: 2px dashed var(--gold-light);
-            border-radius: 8px;
-            padding: 1rem;
-            transition: all 0.2s ease;
-        }
-
-        .drop-zone.drag-over {
+        .accidental-btn:hover {
             border-color: var(--gold);
-            background: rgba(196, 163, 90, 0.1);
         }
 
-        .drop-zone.filled {
-            border-style: solid;
-            background: var(--paper);
+        .accidental-btn.selected {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
         }
 
         /* Timer */
         .timer {
             position: fixed;
             top: 80px;
-            right: 2rem;
+            right: 1.5rem;
             background: var(--warm-white);
             border: 1px solid var(--gold-light);
             border-radius: 12px;
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1.25rem;
             box-shadow: 0 4px 20px var(--shadow);
             z-index: 99;
         }
 
         .timer-label {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: var(--ink-light);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -504,300 +700,106 @@
 
         .timer-value {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--ink);
         }
 
         .timer-value.warning {
             color: var(--error);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
         }
 
         /* Progress Bar */
         .progress-container {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .progress-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
             color: var(--ink-light);
         }
 
         .progress-bar {
-            height: 8px;
+            height: 6px;
             background: var(--gold-light);
-            border-radius: 4px;
+            border-radius: 3px;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--gold), #D4B46A);
-            border-radius: 4px;
+            border-radius: 3px;
             transition: width 0.3s ease;
+        }
+
+        /* Session Stats Bar */
+        .session-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0.75rem;
+            background: var(--paper);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: var(--gold);
         }
 
         /* Navigation */
         .quiz-nav {
             display: flex;
             justify-content: space-between;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--gold-light);
-        }
-
-        /* Results */
-        .results {
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        .results h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .score-display {
-            font-size: 4rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--gold);
-            margin: 2rem 0;
-        }
-
-        .score-breakdown {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .score-item {
-            background: var(--warm-white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--gold-light);
-        }
-
-        .score-item-value {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .score-item-label {
-            color: var(--ink-light);
-            font-size: 0.9rem;
-        }
-
-        /* Feedback Display */
-        .feedback {
-            margin-top: 1.5rem;
-            padding: 1rem 1.25rem;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .feedback.show {
-            display: block;
-        }
-
-        .feedback.correct {
-            background: rgba(74, 124, 89, 0.1);
-            border-left: 4px solid var(--success);
-        }
-
-        .feedback.incorrect {
-            background: rgba(166, 93, 87, 0.1);
-            border-left: 4px solid var(--error);
-        }
-
-        .feedback-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        /* Teacher Dashboard */
-        .dashboard {
-            padding: 2rem;
-        }
-
-        .dashboard h2 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 2rem;
-        }
-
-        .student-table {
-            width: 100%;
-            background: var(--warm-white);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--gold-light);
-        }
-
-        .student-table th,
-        .student-table td {
-            padding: 1rem 1.5rem;
-            text-align: left;
-        }
-
-        .student-table th {
-            background: var(--paper);
-            font-weight: 600;
-            color: var(--ink-light);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .student-table tr:not(:last-child) td {
-            border-bottom: 1px solid var(--gold-light);
-        }
-
-        .score-badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .score-badge.high {
-            background: rgba(74, 124, 89, 0.15);
-            color: var(--success);
-        }
-
-        .score-badge.medium {
-            background: rgba(196, 163, 90, 0.2);
-            color: #9A7B2C;
-        }
-
-        .score-badge.low {
-            background: rgba(166, 93, 87, 0.15);
-            color: var(--error);
-        }
-
-        /* Login Modal */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(44, 36, 22, 0.5);
-            display: none;
             align-items: center;
-            justify-content: center;
-            z-index: 1000;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gold-light);
+            flex-wrap: wrap;
+            gap: 0.75rem;
         }
 
-        .modal-overlay.show {
+        .nav-group {
             display: flex;
+            gap: 0.5rem;
         }
 
-        .modal {
-            background: var(--warm-white);
-            border-radius: 16px;
-            padding: 2.5rem;
-            max-width: 400px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(44, 36, 22, 0.2);
-        }
-
-        .modal h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--ink-light);
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid var(--gold-light);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-
-        /* Hidden Sections */
-        .hidden {
-            display: none !important;
-        }
-
-        /* Music notation placeholder */
-        .music-notation {
-            background: var(--paper);
-            border: 1px solid var(--gold-light);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            text-align: center;
-            font-style: italic;
-            color: var(--ink-light);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .landing h1 {
-                font-size: 2rem;
-            }
-
-            .mode-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .timer {
-                position: relative;
-                top: 0;
-                right: 0;
-                margin-bottom: 1rem;
-            }
-
-            .matching-container {
-                grid-template-columns: 1fr;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Question navigation dots */
+        /* Question dots */
         .question-dots {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
             justify-content: center;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
         }
 
         .question-dot {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             border: 2px solid var(--gold-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -829,28 +831,269 @@
             color: white;
         }
 
-        /* Upload section */
-        .upload-section {
-            background: var(--warm-white);
-            border: 2px dashed var(--gold-light);
-            border-radius: 16px;
-            padding: 3rem 2rem;
+        /* Results */
+        .results {
             text-align: center;
-            margin: 2rem 0;
-            transition: all 0.2s ease;
+            padding: 2rem 1rem;
         }
 
-        .upload-section:hover {
-            border-color: var(--gold);
+        .results h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
         }
 
-        .upload-section input[type="file"] {
+        .score-display {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 1.5rem 0;
+        }
+
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .score-item {
+            background: var(--warm-white);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--gold-light);
+        }
+
+        .score-item-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .score-item-label {
+            color: var(--ink-light);
+            font-size: 0.8rem;
+        }
+
+        /* Feedback Display */
+        .feedback {
+            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
             display: none;
         }
 
-        .upload-icon {
-            font-size: 3rem;
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: rgba(74, 124, 89, 0.1);
+            border-left: 4px solid var(--success);
+        }
+
+        .feedback.incorrect {
+            background: rgba(166, 93, 87, 0.1);
+            border-left: 4px solid var(--error);
+        }
+
+        .feedback-title {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        /* Teacher Dashboard */
+        .dashboard {
+            padding: 1rem;
+        }
+
+        .dashboard h2 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+        }
+
+        .dashboard-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gold-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .dashboard-tab {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--ink-light);
+            border-radius: 6px 6px 0 0;
+            transition: all 0.2s ease;
+        }
+
+        .dashboard-tab.active {
+            background: var(--gold-light);
+            color: var(--ink);
+        }
+
+        .session-table {
+            width: 100%;
+            background: var(--warm-white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--gold-light);
+            font-size: 0.9rem;
+        }
+
+        .session-table th,
+        .session-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        .session-table th {
+            background: var(--paper);
+            font-weight: 600;
+            color: var(--ink-light);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .session-table tr:not(:last-child) td {
+            border-bottom: 1px solid var(--gold-light);
+        }
+
+        .score-badge {
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .score-badge.high {
+            background: rgba(74, 124, 89, 0.15);
+            color: var(--success);
+        }
+
+        .score-badge.medium {
+            background: rgba(196, 163, 90, 0.2);
+            color: #9A7B2C;
+        }
+
+        .score-badge.low {
+            background: rgba(166, 93, 87, 0.15);
+            color: var(--error);
+        }
+
+        .weak-areas {
+            font-size: 0.8rem;
+            color: var(--error);
+        }
+
+        /* Login Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 36, 22, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--warm-white);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 380px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(44, 36, 22, 0.2);
+        }
+
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .form-group {
             margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--ink-light);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            border: 2px solid var(--gold-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* Hidden */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .landing h1 {
+                font-size: 1.8rem;
+            }
+
+            .mode-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .timer {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
+            .header-content {
+                justify-content: center;
+            }
+
+            .question-card {
+                padding: 1.25rem;
+            }
+
+            .true-false-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .true-false-item .tf-statement {
+                margin-bottom: 0.25rem;
+            }
+
+            .session-stats {
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -860,12 +1103,14 @@
         <div class="header-content">
             <div class="logo">
                 <div class="logo-icon">♪</div>
-                <span>Music Theory Practice</span>
+                <span>Grade 5 Theory</span>
             </div>
             <nav class="nav-buttons">
+                <span class="user-info hidden" id="userDisplay"></span>
                 <button class="btn btn-secondary" onclick="showHome()">Home</button>
-                <button class="btn btn-secondary" onclick="showLogin('student')">Student Login</button>
-                <button class="btn btn-primary" onclick="showLogin('teacher')">Teacher Login</button>
+                <button class="btn btn-secondary" id="loginBtn" onclick="showLogin('student')">Student</button>
+                <button class="btn btn-primary" onclick="showLogin('teacher')">Teacher</button>
+                <button class="btn btn-secondary hidden" id="logoutBtn" onclick="logout()">Logout</button>
             </nav>
         </div>
     </header>
@@ -875,36 +1120,50 @@
         <!-- Landing Page -->
         <section id="landing" class="landing">
             <h1>ABRSM Grade 5 Music Theory</h1>
-            <p>Practice makes perfect. Choose your study mode and master music theory concepts through interactive questions.</p>
+            <p>Master music theory through practice. Choose your study mode below.</p>
             
             <div class="mode-cards">
-                <div class="mode-card" onclick="startQuiz('practice')">
+                <div class="mode-card" onclick="selectMode('intensive')">
                     <div class="mode-icon">🎯</div>
-                    <h3>Practice Mode</h3>
-                    <p>Work through questions one at a time with immediate feedback. Perfect for learning and revision.</p>
-                    <span class="btn btn-primary">Start Practice</span>
+                    <h3>Intensive Mode</h3>
+                    <p>Drill specific question types until you master them. Immediate feedback on each question.</p>
+                    <span class="btn btn-primary">Select Question Type</span>
                 </div>
                 
-                <div class="mode-card" onclick="startQuiz('exam')">
+                <div class="mode-card" onclick="selectMode('exam')">
                     <div class="mode-icon">📝</div>
                     <h3>Exam Mode</h3>
-                    <p>Simulate the real exam with a 2-hour timer. See your results only at the end.</p>
-                    <span class="btn btn-primary">Start Exam</span>
+                    <p>Full paper simulation with 2-hour timer. Results shown only at the end.</p>
+                    <span class="btn btn-primary">Select Paper</span>
                 </div>
             </div>
+        </section>
 
-            <div class="section-select">
-                <h3>Select Topics (optional)</h3>
-                <div class="section-chips">
-                    <span class="section-chip active" data-section="all">All Topics</span>
-                    <span class="section-chip" data-section="rhythm">Rhythm</span>
-                    <span class="section-chip" data-section="pitch">Pitch</span>
-                    <span class="section-chip" data-section="keys">Keys & Scales</span>
-                    <span class="section-chip" data-section="intervals">Intervals</span>
-                    <span class="section-chip" data-section="chords">Chords</span>
-                    <span class="section-chip" data-section="terms">Terms & Signs</span>
-                    <span class="section-chip" data-section="context">Music in Context</span>
+        <!-- Intensive Mode Selection -->
+        <section id="intensiveSelect" class="hidden">
+            <div class="selection-panel">
+                <h3>Select Question Type to Practice</h3>
+                <div class="type-grid" id="typeGrid">
+                    <!-- Populated by JS -->
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="btn btn-secondary" onclick="showHome()">← Back</button>
+                <button class="btn btn-primary" id="startIntensiveBtn" onclick="startIntensive()" disabled>Start Practice</button>
+            </div>
+        </section>
+
+        <!-- Exam Mode Selection -->
+        <section id="examSelect" class="hidden">
+            <div class="selection-panel">
+                <h3>Select Year and Paper</h3>
+                <div class="year-paper-grid" id="yearPaperGrid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="btn btn-secondary" onclick="showHome()">← Back</button>
+                <button class="btn btn-primary" id="startExamBtn" onclick="startExam()" disabled>Start Exam</button>
             </div>
         </section>
 
@@ -916,8 +1175,24 @@
                 <div class="timer-value" id="timerDisplay">2:00:00</div>
             </div>
 
+            <!-- Session Stats (intensive mode) -->
+            <div class="session-stats" id="sessionStats">
+                <div class="stat-item">
+                    <span>Attempted:</span>
+                    <span class="stat-value" id="statAttempted">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Correct:</span>
+                    <span class="stat-value" id="statCorrect">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Accuracy:</span>
+                    <span class="stat-value" id="statAccuracy">--%</span>
+                </div>
+            </div>
+
             <!-- Progress -->
-            <div class="progress-container">
+            <div class="progress-container" id="progressContainer">
                 <div class="progress-info">
                     <span id="progressText">Question 1 of 30</span>
                     <span id="scoreText" class="hidden">Score: 0/75</span>
@@ -927,24 +1202,31 @@
                 </div>
             </div>
 
-            <!-- Question Navigation Dots -->
-            <div class="question-dots" id="questionDots"></div>
+            <!-- Question Navigation Dots (exam mode) -->
+            <div class="question-dots hidden" id="questionDots"></div>
 
             <!-- Question Container -->
             <div id="questionContainer"></div>
 
             <!-- Navigation -->
             <div class="quiz-nav">
-                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
-                <button class="btn btn-secondary" id="checkBtn" onclick="checkAnswer()">Check Answer</button>
-                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
-                <button class="btn btn-primary hidden" id="submitBtn" onclick="submitExam()">Submit Exam</button>
+                <div class="nav-group">
+                    <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+                </div>
+                <div class="nav-group">
+                    <button class="btn btn-success" id="checkBtn" onclick="checkAnswer()">Check Answer</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                    <button class="btn btn-primary hidden" id="submitBtn" onclick="submitExam()">Submit Exam</button>
+                </div>
+                <div class="nav-group">
+                    <button class="btn btn-danger" id="endSessionBtn" onclick="endSession()">End Session</button>
+                </div>
             </div>
         </section>
 
         <!-- Results Section -->
         <section id="results" class="results hidden">
-            <h2>Exam Complete!</h2>
+            <h2 id="resultsTitle">Session Complete!</h2>
             <div class="score-display" id="finalScore">65/75</div>
             <p id="scorePercentage">87% - Excellent work!</p>
             
@@ -952,37 +1234,44 @@
                 <!-- Populated dynamically -->
             </div>
 
-            <button class="btn btn-primary" onclick="reviewAnswers()">Review Answers</button>
-            <button class="btn btn-secondary" onclick="showHome()">Back to Home</button>
+            <div style="margin-top: 1.5rem;">
+                <button class="btn btn-primary" id="reviewBtn" onclick="reviewAnswers()">Review Answers</button>
+                <button class="btn btn-secondary" onclick="showHome()">Back to Home</button>
+            </div>
         </section>
 
         <!-- Teacher Dashboard -->
         <section id="dashboard" class="dashboard hidden">
             <h2>Teacher Dashboard</h2>
             
-            <div class="upload-section" onclick="document.getElementById('questionUpload').click()">
-                <input type="file" id="questionUpload" accept=".json,.csv" onchange="handleUpload(event)">
-                <div class="upload-icon">📤</div>
-                <h3>Upload New Questions</h3>
-                <p>Drag & drop or click to upload a JSON or CSV file</p>
+            <div class="dashboard-tabs">
+                <button class="dashboard-tab active" onclick="showDashboardTab('sessions')">Student Sessions</button>
+                <button class="dashboard-tab" onclick="showDashboardTab('questions')">Manage Questions</button>
             </div>
 
-            <h3 style="margin: 2rem 0 1rem; font-family: 'Playfair Display', serif;">Student Results</h3>
-            <table class="student-table">
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>Date</th>
-                        <th>Mode</th>
-                        <th>Score</th>
-                        <th>Time</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="studentResults">
-                    <!-- Populated dynamically -->
-                </tbody>
-            </table>
+            <div id="sessionsTab">
+                <table class="session-table">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Date</th>
+                            <th>Mode</th>
+                            <th>Duration</th>
+                            <th>Questions</th>
+                            <th>Accuracy</th>
+                            <th>Weak Areas</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sessionResults">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="questionsTab" class="hidden">
+                <p style="color: var(--ink-light); margin-bottom: 1rem;">Upload question images following the naming convention: <code>images/grade5/[year]/[paper]/q[number].png</code></p>
+                <p style="color: var(--ink-light);">Edit questions directly in <code>app.js</code> file on GitHub.</p>
+            </div>
         </section>
     </main>
 
@@ -992,16 +1281,16 @@
             <h3 id="loginTitle">Student Login</h3>
             <form onsubmit="handleLogin(event)">
                 <div class="form-group">
-                    <label for="loginName">Name</label>
+                    <label for="loginName">Your Name</label>
                     <input type="text" id="loginName" required placeholder="Enter your name">
                 </div>
-                <div class="form-group" id="passwordGroup" class="hidden">
+                <div class="form-group hidden" id="passwordGroup">
                     <label for="loginPassword">Password</label>
                     <input type="password" id="loginPassword" placeholder="Enter password">
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Continue</button>
             </form>
-            <button class="btn btn-secondary" style="width: 100%; margin-top: 0.75rem;" onclick="closeModal()">Cancel</button>
+            <button class="btn btn-secondary" style="width: 100%; margin-top: 0.5rem;" onclick="closeModal()">Cancel</button>
         </div>
     </div>
 
