@@ -351,6 +351,7 @@ function startIntensive() {
     document.getElementById('questionDots').classList.add('hidden');
     document.getElementById('progressContainer').classList.add('hidden');
     document.getElementById('checkBtn').classList.remove('hidden');
+    document.getElementById('nextBtn').classList.add('hidden');
     document.getElementById('prevBtn').classList.add('hidden');
     document.getElementById('submitBtn').classList.add('hidden');
     
@@ -434,8 +435,18 @@ function showQuestion(idx) {
     if (state.mode === 'intensive') {
         // Show/hide prev button based on position
         document.getElementById('prevBtn').classList.toggle('hidden', idx === 0);
-        // Update check button text
-        document.getElementById('checkBtn').textContent = isAnswered ? 'Next →' : 'Check Answer';
+        
+        // Button visibility based on whether question is answered
+        if (isAnswered) {
+            // Already answered - show Next, hide Check
+            document.getElementById('checkBtn').classList.add('hidden');
+            document.getElementById('nextBtn').classList.remove('hidden');
+        } else {
+            // Not answered - show Check, hide Next
+            document.getElementById('checkBtn').classList.remove('hidden');
+            document.getElementById('checkBtn').textContent = 'Check Answer';
+            document.getElementById('nextBtn').classList.add('hidden');
+        }
     }
     
     document.getElementById('questionContainer').innerHTML = buildQuestionHTML(q, idx);
@@ -571,7 +582,14 @@ function checkAnswer() {
     updateSessionStats();
     showFeedback(idx, result);
     highlightAnswers(q, a, result);
-    document.getElementById('checkBtn').textContent = 'Next →';
+    
+    // In intensive mode, hide Check and show Next after answering
+    if (state.mode === 'intensive') {
+        document.getElementById('checkBtn').classList.add('hidden');
+        document.getElementById('nextBtn').classList.remove('hidden');
+    } else {
+        document.getElementById('checkBtn').textContent = 'Next →';
+    }
 }
 
 function evaluate(q, a) {
