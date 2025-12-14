@@ -12,7 +12,7 @@ const CONFIG = {
     TEACHER_PASSWORD: 'teacher123',
     
     AVAILABLE_PAPERS: {
-        '2020': ['Paper A', 'Paper B', 'Paper C'],
+        '2020': ['Paper O'],
         '2021': ['Paper A', 'Paper B'],
         '2022': ['Paper A', 'Paper B', 'Paper C'],
         '2023': ['Paper A', 'Paper B'],
@@ -77,96 +77,96 @@ let state = {
 // ===================
 
 const questionsDB = {
-    '2020-papera': {
+    '2020-papero': {
         '1.1': [
-            { id: '2020-a-1.1a', type: 'multiple-choice', marks: 1, question: 'Select the correct time signature for this bar:', image: '2020/paper-a/q1.1a.png', options: ['9/8', '4/4', '7/8'], correctAnswer: '9/8' },
-            { id: '2020-a-1.1b', type: 'multiple-choice', marks: 1, question: 'Select the correct time signature for this bar:', image: '2020/paper-a/q1.1b.png', options: ['5/4', '9/8', '4/4'], correctAnswer: '4/4' },
-            { id: '2020-a-1.1c', type: 'multiple-choice', marks: 1, question: 'Select the correct time signature for this bar:', image: '2020/paper-a/q1.1c.png', options: ['6/8', '7/8', '5/8'], correctAnswer: '7/8' }
+            { id: '2020-a-1.1a', type: 'multiple-choice', marks: 1, question: 'Select the correct time signature for this bar:', image: '2020/paper-o/q1.1a.png', options: ['9/8', '4/4', '7/8'], correctAnswer: '9/8' },
+            { id: '2020-a-1.1b', type: 'multiple-choice', marks: 1, question: 'Select the correct time signature for this bar:', image: '2020/paper-o/q1.1b.png', options: ['5/4', '9/8', '4/4'], correctAnswer: '4/4' },
+            { id: '2020-a-1.1c', type: 'multiple-choice', marks: 1, question: 'Select the correct time signature for this bar:', image: '2020/paper-o/q1.1c.png', options: ['6/8', '7/8', '5/8'], correctAnswer: '7/8' }
         ],
         '1.2': [
-            { id: '2020-a-1.2', type: 'multiple-choice', marks: 1, question: 'Which shows this 12/8 bar correctly rewritten in simple time?', image: '2020/paper-a/q1.2.png', options: ['Option A (with triplets and dotted rest)', 'Option B (with triplets and crotchet rest)', 'Option C (without triplets)'], correctAnswer: 'Option A (with triplets and dotted rest)' }
+            { id: '2020-a-1.2', type: 'multiple-choice', marks: 1, question: 'Which shows this 12/8 bar correctly rewritten in simple time?', image: '2020/paper-o/q1.2.png', options: ['Option A (with triplets and dotted rest)', 'Option B (with triplets and crotchet rest)', 'Option C (without triplets)'], correctAnswer: 'Option A (with triplets and dotted rest)' }
         ],
         '1.3': [
             { id: '2020-a-1.3a', type: 'fill-blank', marks: 1, question: 'In 6/8 time, there are ___ dotted-quaver beats in a bar.', correctAnswer: '2' },
             { id: '2020-a-1.3b', type: 'fill-blank', marks: 1, question: 'A breve is equal to ___ crotchet(s).', correctAnswer: '8' }
         ],
         '1.4': [
-            { id: '2020-a-1.4', type: 'multiple-choice', marks: 1, question: 'In 9/4 time, which bar shows correct note grouping?', image: '2020/paper-a/q1.4.png', options: ['Bar 1 (ending with dotted minim)', 'Bar 2 (ending with semibreve)', 'Bar 3'], correctAnswer: 'Bar 1 (ending with dotted minim)' }
+            { id: '2020-a-1.4', type: 'multiple-choice', marks: 1, question: 'In 9/4 time, which bar shows correct note grouping?', image: '2020/paper-o/q1.4.png', options: ['Bar 1 (ending with dotted minim)', 'Bar 2 (ending with semibreve)', 'Bar 3'], correctAnswer: 'Bar 1 (ending with dotted minim)' }
         ],
         '1.5': [
-            { id: '2020-a-1.5', type: 'tick-boxes', marks: 3, question: 'Tick (✓) or cross (✗) to show whether each rest is correct:', image: '2020/paper-a/q1.5.png', elements: [{ label: 'Rest 1', correct: true }, { label: 'Rest 2', correct: false }, { label: 'Rest 3', correct: true }] }
+            { id: '2020-a-1.5', type: 'tick-boxes', marks: 3, question: 'Tick (✓) or cross (✗) to show whether each rest is correct:', image: '2020/paper-o/q1.5.png', elements: [{ label: 'Rest 1', correct: true }, { label: 'Rest 2', correct: false }, { label: 'Rest 3', correct: true }] }
         ],
         '2.1': [
-            { id: '2020-a-2.1', type: 'multiple-choice', marks: 1, question: 'Name this note (alto clef):', image: '2020/paper-a/q2.1.png', options: ['G', 'B', 'F', 'A'], correctAnswer: 'B' }
+            { id: '2020-a-2.1', type: 'multiple-choice', marks: 1, question: 'Name this note (alto clef):', image: '2020/paper-o/q2.1.png', options: ['G', 'B', 'F', 'A'], correctAnswer: 'B' }
         ],
         '2.2': [
-            { id: '2020-a-2.2', type: 'multiple-choice', marks: 1, question: 'Select the enharmonic equivalent:', image: '2020/paper-a/q2.2.png', options: ['D', 'D♭', 'B♯', 'C'], correctAnswer: 'D♭' }
+            { id: '2020-a-2.2', type: 'multiple-choice', marks: 1, question: 'Select the enharmonic equivalent:', image: '2020/paper-o/q2.2.png', options: ['D', 'D♭', 'B♯', 'C'], correctAnswer: 'D♭' }
         ],
         '2.3': [
-            { id: '2020-a-2.3', type: 'tick-boxes', marks: 5, question: 'This clarinet in A part has been transposed down a minor 3rd. Check each element:', image: '2020/paper-a/q2.3.png', elements: [{ label: 'Key sig', correct: true }, { label: 'Note 1', correct: false }, { label: 'Note 2', correct: true }, { label: 'Note 3', correct: false }, { label: 'Note 4', correct: true }] }
+            { id: '2020-a-2.3', type: 'tick-boxes', marks: 5, question: 'This clarinet in A part has been transposed down a minor 3rd. Check each element:', image: '2020/paper-o/q2.3.png', elements: [{ label: 'Key sig', correct: true }, { label: 'Note 1', correct: false }, { label: 'Note 2', correct: true }, { label: 'Note 3', correct: false }, { label: 'Note 4', correct: true }] }
         ],
         '2.4': [
-            { id: '2020-a-2.4', type: 'true-false-multi', marks: 3, question: 'Compare bars A, B and C:', image: '2020/paper-a/q2.4.png', statements: [{ text: 'A and B are at the same pitch', correct: false }, { text: 'B is one octave lower than C', correct: true }, { text: 'C is one octave higher than A', correct: false }] }
+            { id: '2020-a-2.4', type: 'true-false-multi', marks: 3, question: 'Compare bars A, B and C:', image: '2020/paper-o/q2.4.png', statements: [{ text: 'A and B are at the same pitch', correct: false }, { text: 'B is one octave lower than C', correct: true }, { text: 'C is one octave higher than A', correct: false }] }
         ],
         '3.1': [
-            { id: '2020-a-3.1', type: 'multiple-choice', marks: 1, question: 'Which shows B major key signature correctly?', image: '2020/paper-a/q3.1.png', options: ['Alto clef', 'Treble clef', 'Bass clef', 'Tenor clef'], correctAnswer: 'Bass clef' }
+            { id: '2020-a-3.1', type: 'multiple-choice', marks: 1, question: 'Which shows B major key signature correctly?', image: '2020/paper-o/q3.1.png', options: ['Alto clef', 'Treble clef', 'Bass clef', 'Tenor clef'], correctAnswer: 'Bass clef' }
         ],
         '3.2': [
-            { id: '2020-a-3.2', type: 'multiple-choice', marks: 1, question: 'Which shows E♭ minor key signature correctly?', image: '2020/paper-a/q3.2.png', options: ['Treble clef', 'Bass clef', 'Alto clef', 'Tenor clef'], correctAnswer: 'Bass clef' }
+            { id: '2020-a-3.2', type: 'multiple-choice', marks: 1, question: 'Which shows E♭ minor key signature correctly?', image: '2020/paper-o/q3.2.png', options: ['Treble clef', 'Bass clef', 'Alto clef', 'Tenor clef'], correctAnswer: 'Bass clef' }
         ],
         '3.3': [
-            { id: '2020-a-3.3a', type: 'multiple-choice', marks: 1, question: 'What is the key of this melody?', image: '2020/paper-a/q3.3a.png', options: ['G minor', 'D major', 'G major', 'F♯ major'], correctAnswer: 'G major' },
-            { id: '2020-a-3.3b', type: 'multiple-choice', marks: 1, question: 'What is the key of this melody?', image: '2020/paper-a/q3.3b.png', options: ['D major', 'B minor', 'F♯ minor', 'A major'], correctAnswer: 'B minor' },
-            { id: '2020-a-3.3c', type: 'multiple-choice', marks: 1, question: 'What is the key of this melody?', image: '2020/paper-a/q3.3c.png', options: ['A major', 'G♯ minor', 'B major', 'E major'], correctAnswer: 'E major' }
+            { id: '2020-a-3.3a', type: 'multiple-choice', marks: 1, question: 'What is the key of this melody?', image: '2020/paper-o/q3.3a.png', options: ['G minor', 'D major', 'G major', 'F♯ major'], correctAnswer: 'G major' },
+            { id: '2020-a-3.3b', type: 'multiple-choice', marks: 1, question: 'What is the key of this melody?', image: '2020/paper-o/q3.3b.png', options: ['D major', 'B minor', 'F♯ minor', 'A major'], correctAnswer: 'B minor' },
+            { id: '2020-a-3.3c', type: 'multiple-choice', marks: 1, question: 'What is the key of this melody?', image: '2020/paper-o/q3.3c.png', options: ['A major', 'G♯ minor', 'B major', 'E major'], correctAnswer: 'E major' }
         ],
         '3.4': [
-            { id: '2020-a-3.4', type: 'matching', marks: 2, question: 'Complete the B♭ harmonic minor scale:', image: '2020/paper-a/q3.4.png', pairs: [{ label: 'Note X', options: ['A♭', 'B♮', 'A', 'A𝄫'], correct: 'A' }, { label: 'Note Y', options: ['G', 'G♭', 'G𝄫', 'F♭'], correct: 'G♭' }] }
+            { id: '2020-a-3.4', type: 'matching', marks: 2, question: 'Complete the B♭ harmonic minor scale:', image: '2020/paper-o/q3.4.png', pairs: [{ label: 'Note X', options: ['A♭', 'B♮', 'A', 'A𝄫'], correct: 'A' }, { label: 'Note Y', options: ['G', 'G♭', 'G𝄫', 'F♭'], correct: 'G♭' }] }
         ],
         '3.5': [
-            { id: '2020-a-3.5', type: 'matching', marks: 3, question: 'Select the correct clef for each minor scale:', image: '2020/paper-a/q3.5.png', pairs: [{ label: 'Scale (a)', options: ['Treble', 'Bass', 'Alto'], correct: 'Treble' }, { label: 'Scale (b)', options: ['Treble', 'Bass', 'Alto'], correct: 'Bass' }, { label: 'Scale (c)', options: ['Treble', 'Bass', 'Alto'], correct: 'Alto' }] }
+            { id: '2020-a-3.5', type: 'matching', marks: 3, question: 'Select the correct clef for each minor scale:', image: '2020/paper-o/q3.5.png', pairs: [{ label: 'Scale (a)', options: ['Treble', 'Bass', 'Alto'], correct: 'Treble' }, { label: 'Scale (b)', options: ['Treble', 'Bass', 'Alto'], correct: 'Bass' }, { label: 'Scale (c)', options: ['Treble', 'Bass', 'Alto'], correct: 'Alto' }] }
         ],
         '3.6': [
-            { id: '2020-a-3.6', type: 'true-false-multi', marks: 2, question: 'Are these chromatic scales correct?', image: '2020/paper-a/q3.6.png', statements: [{ text: 'Chromatic scale (a)', correct: true }, { text: 'Chromatic scale (b)', correct: false }] }
+            { id: '2020-a-3.6', type: 'true-false-multi', marks: 2, question: 'Are these chromatic scales correct?', image: '2020/paper-o/q3.6.png', statements: [{ text: 'Chromatic scale (a)', correct: true }, { text: 'Chromatic scale (b)', correct: false }] }
         ],
         '3.7': [
             { id: '2020-a-3.7', type: 'true-false-multi', marks: 3, question: 'Are these technical names correct?', statements: [{ text: 'A♯ is the leading note in B major', correct: true }, { text: 'D is the subdominant in A minor', correct: false }, { text: 'D is the submediant in F♯ minor', correct: true }] }
         ],
         '4.1': [
-            { id: '2020-a-4.1a', type: 'multiple-choice', marks: 1, question: 'Name this interval:', image: '2020/paper-a/q4.1a.png', options: ['Major 10th', 'Compound perfect 4th', 'Augmented 11th', 'Compound dim 4th'], correctAnswer: 'Compound perfect 4th' },
-            { id: '2020-a-4.1b', type: 'multiple-choice', marks: 1, question: 'Name this interval:', image: '2020/paper-a/q4.1b.png', options: ['Diminished 5th', 'Perfect 5th', 'Augmented 4th', 'Major 4th'], correctAnswer: 'Diminished 5th' },
-            { id: '2020-a-4.1c', type: 'multiple-choice', marks: 1, question: 'Name this interval:', image: '2020/paper-a/q4.1c.png', options: ['Compound minor 2nd', 'Major 2nd', 'Major 9th', 'Minor 10th'], correctAnswer: 'Major 9th' }
+            { id: '2020-a-4.1a', type: 'multiple-choice', marks: 1, question: 'Name this interval:', image: '2020/paper-o/q4.1a.png', options: ['Major 10th', 'Compound perfect 4th', 'Augmented 11th', 'Compound dim 4th'], correctAnswer: 'Compound perfect 4th' },
+            { id: '2020-a-4.1b', type: 'multiple-choice', marks: 1, question: 'Name this interval:', image: '2020/paper-o/q4.1b.png', options: ['Diminished 5th', 'Perfect 5th', 'Augmented 4th', 'Major 4th'], correctAnswer: 'Diminished 5th' },
+            { id: '2020-a-4.1c', type: 'multiple-choice', marks: 1, question: 'Name this interval:', image: '2020/paper-o/q4.1c.png', options: ['Compound minor 2nd', 'Major 2nd', 'Major 9th', 'Minor 10th'], correctAnswer: 'Major 9th' }
         ],
         '4.2': [
-            { id: '2020-a-4.2a', type: 'multiple-choice', marks: 1, question: 'What type is this interval?', image: '2020/paper-a/q4.2a.png', options: ['Perfect', 'Major', 'Minor', 'Diminished', 'Augmented'], correctAnswer: 'Minor' },
-            { id: '2020-a-4.2b', type: 'multiple-choice', marks: 1, question: 'What type is this interval?', image: '2020/paper-a/q4.2b.png', options: ['Perfect', 'Major', 'Minor', 'Diminished', 'Augmented'], correctAnswer: 'Major' },
-            { id: '2020-a-4.2c', type: 'multiple-choice', marks: 1, question: 'What type is this interval?', image: '2020/paper-a/q4.2c.png', options: ['Perfect', 'Major', 'Minor', 'Diminished', 'Augmented'], correctAnswer: 'Diminished' }
+            { id: '2020-a-4.2a', type: 'multiple-choice', marks: 1, question: 'What type is this interval?', image: '2020/paper-o/q4.2a.png', options: ['Perfect', 'Major', 'Minor', 'Diminished', 'Augmented'], correctAnswer: 'Minor' },
+            { id: '2020-a-4.2b', type: 'multiple-choice', marks: 1, question: 'What type is this interval?', image: '2020/paper-o/q4.2b.png', options: ['Perfect', 'Major', 'Minor', 'Diminished', 'Augmented'], correctAnswer: 'Major' },
+            { id: '2020-a-4.2c', type: 'multiple-choice', marks: 1, question: 'What type is this interval?', image: '2020/paper-o/q4.2c.png', options: ['Perfect', 'Major', 'Minor', 'Diminished', 'Augmented'], correctAnswer: 'Diminished' }
         ],
         '4.3': [
             { id: '2020-a-4.3', type: 'matching', marks: 4, question: 'Match intervals with upper notes:', pairs: [{ label: 'Compound P5 above G♯', options: ['D♯', 'E♯', 'D', 'E'], correct: 'D♯' }, { label: 'Minor 7th above B♭', options: ['A♭', 'A', 'G♯', 'G'], correct: 'A♭' }, { label: 'Aug 12th above C', options: ['G♯', 'G', 'F♯', 'A♭'], correct: 'G♯' }, { label: 'Minor 3rd above A', options: ['C', 'C♯', 'B', 'D'], correct: 'C' }] }
         ],
         '5.1': [
-            { id: '2020-a-5.1', type: 'chord-progression', marks: 5, question: 'Select chords (I, II, IV, V) for the cadences:', image: '2020/paper-a/q5.1.png', slots: ['Chord 1', 'Chord 2', 'Chord 3', 'Chord 4', 'Chord 5'], options: ['I', 'II', 'IV', 'V'], correctAnswers: ['II', 'V', 'I', 'IV', 'I'] }
+            { id: '2020-a-5.1', type: 'chord-progression', marks: 5, question: 'Select chords (I, II, IV, V) for the cadences:', image: '2020/paper-o/q5.1.png', slots: ['Chord 1', 'Chord 2', 'Chord 3', 'Chord 4', 'Chord 5'], options: ['I', 'II', 'IV', 'V'], correctAnswers: ['II', 'V', 'I', 'IV', 'I'] }
         ],
         '5.2': [
-            { id: '2020-a-5.2a', type: 'multiple-choice', marks: 1, question: 'Name this cadence (D major):', image: '2020/paper-a/q5.2a.png', options: ['Imperfect', 'Plagal', 'Perfect'], correctAnswer: 'Perfect' },
-            { id: '2020-a-5.2b', type: 'multiple-choice', marks: 1, question: 'Name this cadence (F major):', image: '2020/paper-a/q5.2b.png', options: ['Perfect', 'Plagal', 'Imperfect'], correctAnswer: 'Plagal' }
+            { id: '2020-a-5.2a', type: 'multiple-choice', marks: 1, question: 'Name this cadence (D major):', image: '2020/paper-o/q5.2a.png', options: ['Imperfect', 'Plagal', 'Perfect'], correctAnswer: 'Perfect' },
+            { id: '2020-a-5.2b', type: 'multiple-choice', marks: 1, question: 'Name this cadence (F major):', image: '2020/paper-o/q5.2b.png', options: ['Perfect', 'Plagal', 'Imperfect'], correctAnswer: 'Plagal' }
         ],
         '5.3': [
-            { id: '2020-a-5.3', type: 'matching', marks: 3, question: 'Name each chord in C minor:', image: '2020/paper-a/q5.3.png', pairs: [{ label: 'Chord A', options: ['Va', 'Ic', 'IVb', 'Ib'], correct: 'Ic' }, { label: 'Chord B', options: ['Ic', 'Vb', 'IVb', 'IVc'], correct: 'IVb' }, { label: 'Chord C', options: ['Ic', 'IIa', 'Vb', 'Va'], correct: 'Va' }] }
+            { id: '2020-a-5.3', type: 'matching', marks: 3, question: 'Name each chord in C minor:', image: '2020/paper-o/q5.3.png', pairs: [{ label: 'Chord A', options: ['Va', 'Ic', 'IVb', 'Ib'], correct: 'Ic' }, { label: 'Chord B', options: ['Ic', 'Vb', 'IVb', 'IVc'], correct: 'IVb' }, { label: 'Chord C', options: ['Ic', 'IIa', 'Vb', 'Va'], correct: 'Va' }] }
         ],
         '6.1': [
             { id: '2020-a-6.1', type: 'matching', marks: 3, question: 'Match terms with meanings:', pairs: [{ label: 'morendo', options: ['Dying away', 'Getting louder', 'Playful', 'Agitated'], correct: 'Dying away' }, { label: 'largamente', options: ['Majestic', 'Broadly', 'Very slow', 'Expressive'], correct: 'Broadly' }, { label: 'mesto', options: ['Rather slow', 'Less', 'Calm', 'Sad'], correct: 'Sad' }] }
         ],
         '6.2': [
-            { id: '2020-a-6.2a', type: 'multiple-choice', marks: 1, question: 'Name this ornament:', image: '2020/paper-a/q6.2a.png', options: ['Appoggiatura', 'Upper turn', 'Trill', 'Upper mordent'], correctAnswer: 'Trill' },
-            { id: '2020-a-6.2b', type: 'multiple-choice', marks: 1, question: 'Name this ornament:', image: '2020/paper-a/q6.2b.png', options: ['Acciaccatura', 'Upper turn', 'Trill', 'Lower mordent'], correctAnswer: 'Upper turn' }
+            { id: '2020-a-6.2a', type: 'multiple-choice', marks: 1, question: 'Name this ornament:', image: '2020/paper-o/q6.2a.png', options: ['Appoggiatura', 'Upper turn', 'Trill', 'Upper mordent'], correctAnswer: 'Trill' },
+            { id: '2020-a-6.2b', type: 'multiple-choice', marks: 1, question: 'Name this ornament:', image: '2020/paper-o/q6.2b.png', options: ['Acciaccatura', 'Upper turn', 'Trill', 'Lower mordent'], correctAnswer: 'Upper turn' }
         ],
         '6.3': [
             { id: '2020-a-6.3', type: 'true-false-multi', marks: 5, question: 'Are these statements true or false?', statements: [{ text: 'Flute plays higher than bassoon', correct: true }, { text: 'Trumpet is a woodwind', correct: false }, { text: 'Cymbals have definite pitch', correct: false }, { text: 'Horn uses double reed', correct: false }, { text: 'Mezzo-soprano is lower than soprano', correct: true }] }
         ],
         '7.x': [
-            { id: '2020-a-7.1', type: 'multiple-choice', marks: 1, question: 'Which is correctly written one octave lower?', image: '2020/paper-a/q7.1.png', options: ['Only A', 'Only B and C', 'A, B and C', 'Only A and B'], correctAnswer: 'Only A' },
-            { id: '2020-a-7.2', type: 'true-false-multi', marks: 5, question: 'Study the Vivace piece:', image: '2020/paper-a/q7.2.png', statements: [{ text: 'Beginning should be played lightly', correct: true }, { text: 'Ends on subdominant of F♯ minor', correct: false }, { text: 'Largest interval in bar 7 LH is major 3rd', correct: true }, { text: 'Highest note is C♯', correct: false }, { text: 'Gets quieter in bar 7', correct: false }] },
+            { id: '2020-a-7.1', type: 'multiple-choice', marks: 1, question: 'Which is correctly written one octave lower?', image: '2020/paper-o/q7.1.png', options: ['Only A', 'Only B and C', 'A, B and C', 'Only A and B'], correctAnswer: 'Only A' },
+            { id: '2020-a-7.2', type: 'true-false-multi', marks: 5, question: 'Study the Vivace piece:', image: '2020/paper-o/q7.2.png', statements: [{ text: 'Beginning should be played lightly', correct: true }, { text: 'Ends on subdominant of F♯ minor', correct: false }, { text: 'Largest interval in bar 7 LH is major 3rd', correct: true }, { text: 'Highest note is C♯', correct: false }, { text: 'Gets quieter in bar 7', correct: false }] },
             { id: '2020-a-7.3', type: 'multiple-choice', marks: 1, question: 'Which instrument suits bars 3-4?', options: ['Bassoon', 'Oboe', 'Trombone', 'Double bass'], correctAnswer: 'Oboe' },
             { id: '2020-a-7.4', type: 'multiple-choice', marks: 1, question: 'How many times does mediant appear in LH?', options: ['4', '5', '6', '8'], correctAnswer: '6' },
             { id: '2020-a-7.5a', type: 'fill-blank', marks: 1, question: 'Bar 3 has same rhythm as bar ___.', correctAnswer: '2' },
