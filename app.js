@@ -580,19 +580,39 @@ function evaluate(q, a) {
             return { correct: a === q.correctAnswer, message: a === q.correctAnswer ? 'Correct!' : `Answer: ${q.correctAnswer}` };
         case 'true-false-multi':
             const tfr = q.statements.map((s,i) => a[i] === s.correct);
-            return { correct: tfr.every(r=>r), results: tfr, message: `${tfr.filter(r=>r).length}/${q.statements.length}` };
+            const tfCorrectAnswers = q.statements.map((s, i) => `${String.fromCharCode(97 + i)}) ${s.correct ? 'True' : 'False'}`).join(', ');
+            return { 
+                correct: tfr.every(r=>r), 
+                results: tfr, 
+                message: tfr.every(r=>r) ? 'All correct!' : `Correct answers: ${tfCorrectAnswers}` 
+            };
         case 'tick-boxes':
             const tbr = q.elements.map((e,i) => a[i] === e.correct);
-            return { correct: tbr.every(r=>r), results: tbr, message: `${tbr.filter(r=>r).length}/${q.elements.length}` };
+            const tbCorrectAnswers = q.elements.map((e, i) => `${e.label}: ${e.correct ? '✓' : '✗'}`).join(', ');
+            return { 
+                correct: tbr.every(r=>r), 
+                results: tbr, 
+                message: tbr.every(r=>r) ? 'All correct!' : `Correct answers: ${tbCorrectAnswers}` 
+            };
         case 'fill-blank':
             const fb = a.toLowerCase() === q.correctAnswer.toLowerCase();
             return { correct: fb, message: fb ? 'Correct!' : `Answer: ${q.correctAnswer}` };
         case 'matching':
             const mr = q.pairs.map((p,i) => a[i] === p.correct);
-            return { correct: mr.every(r=>r), results: mr, message: `${mr.filter(r=>r).length}/${q.pairs.length}` };
+            const mCorrectAnswers = q.pairs.map((p, i) => `${p.label}: ${p.correct}`).join(', ');
+            return { 
+                correct: mr.every(r=>r), 
+                results: mr, 
+                message: mr.every(r=>r) ? 'All correct!' : `Correct answers: ${mCorrectAnswers}` 
+            };
         case 'chord-progression':
             const cr = q.correctAnswers.map((c,i) => a[i] === c);
-            return { correct: cr.every(r=>r), results: cr, message: `${cr.filter(r=>r).length}/${q.correctAnswers.length}` };
+            const cpCorrectAnswers = q.slots ? q.slots.map((s, i) => `${s}: ${q.correctAnswers[i]}`).join(', ') : q.correctAnswers.join(', ');
+            return { 
+                correct: cr.every(r=>r), 
+                results: cr, 
+                message: cr.every(r=>r) ? 'All correct!' : `Correct answers: ${cpCorrectAnswers}` 
+            };
         default: return { correct: false, message: '' };
     }
 }
