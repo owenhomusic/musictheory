@@ -633,6 +633,29 @@
             border-color: var(--gold);
         }
 
+        .matching-row select.correct {
+            border-color: var(--success);
+            background: rgba(74, 124, 89, 0.1);
+        }
+
+        .matching-row select.incorrect {
+            border-color: var(--error);
+            background: rgba(166, 93, 87, 0.1);
+        }
+
+        .correct-answer-hint {
+            color: var(--success);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .fill-blank .correct-answer-hint {
+            display: block;
+            margin-top: 0.5rem;
+            margin-left: 0;
+        }
+
         /* Click-to-Place Staff */
         .staff-container {
             position: relative;

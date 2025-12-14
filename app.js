@@ -421,6 +421,7 @@ function updateTimerDisplay() {
 function showQuestion(idx) {
     state.currentQuestion = idx;
     const q = state.questions[idx];
+    const isAnswered = state.questionResults[idx] !== undefined;
     
     if (state.mode === 'exam') {
         document.getElementById('progressText').textContent = `Question ${idx+1} of ${state.questions.length}`;
@@ -430,8 +431,36 @@ function showQuestion(idx) {
         document.getElementById('submitBtn').classList.toggle('hidden', idx !== state.questions.length-1);
     }
     
+    if (state.mode === 'intensive') {
+        // Show/hide prev button based on position
+        document.getElementById('prevBtn').classList.toggle('hidden', idx === 0);
+        // Update check button text
+        document.getElementById('checkBtn').textContent = isAnswered ? 'Next →' : 'Check Answer';
+    }
+    
     document.getElementById('questionContainer').innerHTML = buildQuestionHTML(q, idx);
-    if (state.answers[idx] !== undefined) restoreAnswer(q, idx);
+    
+    // Restore answer if exists
+    if (state.answers[idx] !== undefined) {
+        restoreAnswer(q, idx);
+    }
+    
+    // If already answered (in intensive mode), show feedback and highlight
+    if (isAnswered && state.mode === 'intensive') {
+        const result = evaluate(q, state.answers[idx]);
+        showFeedback(idx, result);
+        highlightAnswers(q, state.answers[idx], result);
+        disableInputs(); // Prevent changing answered questions
+    }
+}
+
+function disableInputs() {
+    // Disable all inputs for answered questions
+    document.querySelectorAll('.option').forEach(o => o.style.pointerEvents = 'none');
+    document.querySelectorAll('.tf-btn').forEach(b => b.disabled = true);
+    document.querySelectorAll('.tick-btn').forEach(b => b.disabled = true);
+    document.querySelectorAll('.fill-blank input').forEach(i => i.disabled = true);
+    document.querySelectorAll('.matching-row select').forEach(s => s.disabled = true);
 }
 
 function buildQuestionHTML(q, idx) {
@@ -576,11 +605,76 @@ function showFeedback(idx, result) {
 }
 
 function highlightAnswers(q, a, result) {
-    if (q.type === 'multiple-choice') {
-        document.querySelectorAll('.option').forEach(o => {
-            if (o.dataset.value === q.correctAnswer) o.classList.add('correct');
-            else if (o.classList.contains('selected')) o.classList.add('incorrect');
-        });
+    switch(q.type) {
+        case 'multiple-choice':
+            document.querySelectorAll('.option').forEach(o => {
+                if (o.dataset.value === q.correctAnswer) o.classList.add('correct');
+                else if (o.classList.contains('selected')) o.classList.add('incorrect');
+            });
+            break;
+        case 'true-false-multi':
+            document.querySelectorAll('.true-false-item').forEach((item, i) => {
+                const correct = q.statements[i].correct;
+                item.querySelectorAll('.tf-btn').forEach(btn => {
+                    const btnValue = btn.textContent === 'True';
+                    if (btnValue === correct) btn.classList.add('correct');
+                    else if (btn.classList.contains('selected')) btn.classList.add('incorrect');
+                });
+            });
+            break;
+        case 'tick-boxes':
+            document.querySelectorAll('.tick-box-column').forEach((col, i) => {
+                const correct = q.elements[i].correct;
+                col.querySelectorAll('.tick-btn').forEach(btn => {
+                    const btnValue = btn.textContent === '✓';
+                    if (btnValue === correct) btn.classList.add('correct');
+                    else if (btn.classList.contains('selected')) btn.classList.add('incorrect');
+                });
+            });
+            break;
+        case 'fill-blank':
+            const input = document.getElementById(`blank-${state.currentQuestion}`);
+            if (input) {
+                input.classList.add(result.correct ? 'correct' : 'incorrect');
+                if (!result.correct) {
+                    // Show correct answer below
+                    const hint = document.createElement('div');
+                    hint.className = 'correct-answer-hint';
+                    hint.textContent = `Correct answer: ${q.correctAnswer}`;
+                    input.parentElement.appendChild(hint);
+                }
+            }
+            break;
+        case 'matching':
+            document.querySelectorAll('.matching-row').forEach((row, i) => {
+                const select = row.querySelector('select');
+                const correct = q.pairs[i].correct;
+                if (a[i] === correct) {
+                    select.classList.add('correct');
+                } else {
+                    select.classList.add('incorrect');
+                    const hint = document.createElement('span');
+                    hint.className = 'correct-answer-hint';
+                    hint.textContent = ` → ${correct}`;
+                    row.appendChild(hint);
+                }
+            });
+            break;
+        case 'chord-progression':
+            document.querySelectorAll('.matching-row').forEach((row, i) => {
+                const select = row.querySelector('select');
+                const correct = q.correctAnswers[i];
+                if (a[i] === correct) {
+                    select.classList.add('correct');
+                } else {
+                    select.classList.add('incorrect');
+                    const hint = document.createElement('span');
+                    hint.className = 'correct-answer-hint';
+                    hint.textContent = ` → ${correct}`;
+                    row.appendChild(hint);
+                }
+            });
+            break;
     }
 }
 
@@ -595,15 +689,29 @@ function updateSessionStats() {
 // NAVIGATION
 // ===================
 
-function previousQuestion() { if (state.currentQuestion > 0) showQuestion(state.currentQuestion - 1); }
+function previousQuestion() { 
+    if (state.currentQuestion > 0) {
+        showQuestion(state.currentQuestion - 1);
+    }
+}
 
 function nextQuestion() {
     document.getElementById('checkBtn').textContent = 'Check Answer';
     if (state.mode === 'intensive') {
-        if (state.currentQuestion < state.questions.length - 1) showQuestion(state.currentQuestion + 1);
-        else { shuffle(state.questions); showQuestion(0); }
+        if (state.currentQuestion < state.questions.length - 1) {
+            showQuestion(state.currentQuestion + 1);
+        } else {
+            // Reached end - reshuffle and restart
+            shuffle(state.questions);
+            // Reset results for reshuffled questions
+            state.answers = {};
+            state.questionResults = {};
+            showQuestion(0);
+        }
     } else {
-        if (state.currentQuestion < state.questions.length - 1) showQuestion(state.currentQuestion + 1);
+        if (state.currentQuestion < state.questions.length - 1) {
+            showQuestion(state.currentQuestion + 1);
+        }
     }
 }
 
